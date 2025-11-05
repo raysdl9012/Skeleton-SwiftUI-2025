@@ -31,9 +31,15 @@ let project = Project(
     organizationName: "\(organization)",
     settings: .settings(
         configurations: [
-            .debug(name: "Debug", settings: debugSettings(), xcconfig: "InstagramClone/Configuration/xcconfigs/Debug.xcconfig"),
-            .debug(name: "Staging", settings: stagingSettings(), xcconfig: "InstagramClone/Configuration/xcconfigs/Staging.xcconfig"),
-            .release(name: "Release", settings: releaseSettings(), xcconfig: "InstagramClone/Configuration/xcconfigs/Release.xcconfig")
+            .debug(name: "Debug",
+                   settings: debugSettings(),
+                   xcconfig: "Configuration/xcconfigs/Debug.xcconfig"),
+            .debug(name: "Staging",
+                   settings: stagingSettings(),
+                   xcconfig: "Configuration/xcconfigs/Staging.xcconfig"),
+            .release(name: "Release",
+                     settings: releaseSettings(),
+                     xcconfig: "Configuration/xcconfigs/Release.xcconfig")
         ]
     ),
     targets: [
