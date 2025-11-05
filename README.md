@@ -22,7 +22,6 @@ A professional iOS project skeleton that demonstrates how to structure and organ
 - [YAML Configuration](#-yaml-configuration)
 - [Project Structure](#-project-structure)
 - [How It Works](#-how-it-works)
-- [Step-by-Step Tutorial](#-step-by-step-tutorial)
 - [Template Types Reference](#-template-types-reference)
 - [Customization](#-customization)
 - [Contributing](#-contributing)
@@ -157,10 +156,10 @@ git clone https://github.com/your-username/ios-project-skeleton.git
 cd ios-project-skeleton
 
 # 2. Make scripts executable
-chmod +x scripts/generate_structure.sh
+chmod +x build.sh
 
 # 3. Generate project structure
-./scripts/generate_structure.sh architecture.yml
+./build.sh
 
 # 4. Generate Xcode project with Tuist
 tuist generate
@@ -229,12 +228,11 @@ You should see:
 ```
 .
 ├── README.md
-├── architecture.yml          # Your project structure definition
+├── architecture.yml         # Your project structure definition
 ├── Project.swift            # Tuist project configuration
 ├── Tuist/                   # Tuist configuration files
 │   └── Templates/           # File templates
-└── scripts/
-    └── generate_structure.sh # Structure generation script
+└── build.sh				  # Structure generation script
 ```
 
 ### Step 3: Understand the Files
@@ -245,7 +243,7 @@ Before generating your project, familiarize yourself with key files:
 |------|---------|
 | `architecture.yml` | Defines your entire project structure |
 | `Project.swift` | Configures Tuist project settings |
-| `generate_structure.sh` | Script that creates folders/files from YAML |
+| `build.sh` | Script that creates folders/files from YAML |
 | `Tuist/Templates/` | Contains file templates for code generation |
 
 ---
@@ -590,201 +588,6 @@ graph TD
     F -->|6. Open| G[💻 Ready to Code]
 ```
 
-
-## 📚 Step-by-Step Tutorial
-
-### Tutorial: Creating a New Project from Scratch
-
-Let's create a simple Todo app to understand the complete workflow.
-
-#### Step 1: Clone and Setup
-
-```bash
-# Clone the skeleton
-git clone https://github.com/your-username/ios-project-skeleton.git
-cd ios-project-skeleton
-
-# Make script executable
-chmod +x scripts/generate_structure.sh
-```
-
-#### Step 2: Customize YAML Configuration
-
-Edit `architecture.yml` to define your Todo app structure:
-
-```yaml
-name: "TodoApp"
-author: "Your Name"
-description: "A simple todo application"
-
-build:
-  Tests:
-    TodoTests:
-      file: "TodoTests.swift"
-      type: "test"
-  
-  Sources:
-    file: "TodoAppApp.swift"
-    type: "main"
-    
-    Application:
-      Core:
-        Storage:
-          PersistenceController:
-            file: "PersistenceController.swift"
-            type: "class"
-      
-      Models:
-        Todo:
-          file: "Todo.swift"
-          type: "model"
-      
-      Features:
-        TodoList:
-          Views:
-            TodoListView:
-              file: "TodoListView.swift"
-              type: "view"
-            TodoRowView:
-              file: "TodoRowView.swift"
-              type: "view"
-          ViewMode:
-            TodoListViewModel:
-              file: "TodoListViewModel.swift"
-              type: "class"
-      
-      Services:
-        TodoService:
-          file: "TodoService.swift"
-          type: "class"
-      
-      Shared:
-        Components:
-          AddButton:
-            file: "AddButton.swift"
-            type: "class"
-  
-  Resources:
-    Assets.xcassets:
-      file: "Contents.json"
-      type: "Assets_xcassets"
-```
-
-#### Step 3: Generate Structure
-
-```bash
-# Run the generation script
-./build.sh
-
-# You should see output like:
-# ✓ Creating folder: Tests/TodoTests
-# ✓ Creating file: TodoTests.swift
-# ✓ Creating folder: Sources/Application/Core/Storage
-# ✓ Creating file: PersistenceController.swift
-# ... etc
-```
-
-#### Step 4: Verify Structure
-
-```bash
-# Check generated structure
-tree Sources
-
-# Output:
-# Sources/
-# ├── TodoAppApp.swift
-# └── Application/
-#     ├── Core/
-#     │   └── Storage/
-#     │       └── PersistenceController.swift
-#     ├── Models/
-#     │   └── Todo.swift
-#     ├── Features/
-#     │   └── TodoList/
-#     │       ├── Views/
-#     │       │   ├── TodoListView.swift
-#     │       │   └── TodoRowView.swift
-#     │       └── ViewMode/
-#     │           └── TodoListViewModel.swift
-#     ├── Services/
-#     │   └── TodoService.swift
-#     └── Shared/
-#         └── Components/
-#             └── AddButton.swift
-```
-
-#### Step 5: Configure Tuist Project
-
-Create or edit `Project.swift`:
-
-```swift
-import Foundation
-import ProjectDescription
-
-// MARK: - Base Settings
-
-private let name = "InstagramClone"
-private let bundleIdentifier = "com.rsdl.project"
-private let organization = "rsdl"
-
-let baseSettings: SettingsDictionary = [:]
-
-
-
-// MARK: - Project Definition
-let project = Project(
-    name: "\(name)",
-    organizationName: "\(organization)", options: .options(
-        automaticSchemesOptions: .enabled(
-            codeCoverageEnabled: true
-        )
-    ),
-    settings: .settings(
-        base: getBasicSettings(),
-        configurations: [
-            .debug(name: "Debug",
-                   settings: debugSettings(),
-                   xcconfig: "Configuration/xcconfigs/Debug.xcconfig"),
-            .debug(name: "Staging",
-                   settings: stagingSettings(),
-                   xcconfig: "Configuration/xcconfigs/Staging.xcconfig"),
-            .release(name: "Release",
-                     settings: releaseSettings(),
-                     xcconfig: "Configuration/xcconfigs/Release.xcconfig")
-        ]
-    ),
-  ...
-  ...
-  ]
-)
-```
-
-#### Step 6: Generate Xcode Project
-
-```bash
-# Generate the Xcode project
-tuist generate
-
-# Output:
-# Generating project TodoApp
-# Project generated at /path/to/TodoApp.xcworkspace
-```
-
-#### Step 7: Open and Build
-
-```bash
-# Open in Xcode
-open TodoApp.xcworkspace
-
-# Or build from command line
-tuist build
-```
-
-#### Step 8: Start Coding!
-
-Now you have a complete project structure ready. Open any generated file and start implementing:
-
----
 
 ## 🎨 Template Types Reference
 
