@@ -14,20 +14,37 @@ build:
     Application:
       Core:
         Networking:
-          file: "NetworkManager.swift"
-          type: "class"
-        APIEndpoint:
-          file: "APIEndpoint.swift"
-          type: "class"
-        HTTPMethod:
-          file: "HTTPMethod.swift"
-          type: "class"
-
+          NetworkManager:
+            file: "NetworkManager.swift"
+            type: "class"
+          APIEndpoint:
+            file: "APIEndpoint.swift"
+            type: "class"
+          HTTPMethod:
+            file: "HTTPMethod.swift"
+            type: "class"
+        Storage:
+          UserDefaultsManager:
+            file: "UserDefaultsManager.swift"
+            type: "class"
+          KeychainManager:
+            file: "KeychainManager.swift"
+            type: "class"
+          CoreData:
+            file: "CoreData.swift"
+            type: "class"
+        Extensions:
+          Views:
+            file: "ViewExtension.swift"
+            type: "class"
+        Utilities:
+          Constants:
+            file: "Logger.swift"
+            type: "class"
       Models:
         UserEntity:
           file: "UserEntity.swift"
           type: "model"
-
       Features:
         Splash:
           Views:
@@ -38,7 +55,6 @@ build:
             SplashViewModel:
               file: "SplashViewModel.swift"
               type: "class"
-
         Authentication:
           Views:
             Login:
@@ -55,18 +71,16 @@ build:
             RegisterViewModel:
               file: "RegisterViewModel.swift"
               type: "class"
-
       Services:
         AuthenticationService:
           file: "AuthenticationService.swift"
           type: "class"
-        PostService:
-          file: "PostService.swift"
+        AnyService:
+          file: "AnyService.swift"
           type: "class"
         UserService:
           file: "UserService.swift"
           type: "class"
-
       Shared:
         Components:
           Button:
@@ -75,7 +89,6 @@ build:
           TextField:
             file: "CustomTextField.swift"
             type: "class"
-
         Modifiers:
           Card:
             file: "CardModifier.swift"

@@ -11,7 +11,7 @@
 # ==============================================================================
 
 # --- Configuration ---
-YAML_FILE="mvvm.yml"
+YAML_FILE="architecture.yml"
 TEMPLATES_DIR="Templates"
 
 # --- Colors for output ---

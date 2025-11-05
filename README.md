@@ -1,50 +1,77 @@
-# 📱 Instagram Clone - SwiftUI + MVVM Architecture
+# 📱 iOS Project Skeleton - YAML-Driven Architecture
 
 ![Swift](https://img.shields.io/badge/Swift-5.9-orange.svg)
 ![Platform](https://img.shields.io/badge/Platform-iOS%2016+-blue.svg)
 ![Architecture](https://img.shields.io/badge/Architecture-MVVM-green.svg)
 ![SwiftUI](https://img.shields.io/badge/UI-SwiftUI-purple.svg)
 ![Tuist](https://img.shields.io/badge/Build%20Tool-Tuist-red.svg)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-A complete Instagram clone developed in SwiftUI using clean and scalable MVVM architecture. This project demonstrates best practices in modern iOS development, including automated project generation with Tuist and architecture management through YAML files.
+A professional iOS project skeleton that demonstrates how to structure and organize a SwiftUI application using MVVM architecture. This template provides an automated workflow for generating project structure from YAML configuration files, using Tuist for project management and yq for YAML processing. Perfect for kickstarting new iOS projects with a clean, scalable architecture.
 
 ---
 
 ## 📋 Table of Contents
 
+- [Why Use This Skeleton?](#-why-use-this-skeleton)
 - [Features](#-features)
-- [Architecture](#-architecture)
+- [Architecture Overview](#-architecture-overview)
 - [Requirements](#-requirements)
-- [Installation](#-installation)
-- [Project Structure](#-project-structure)
-- [Project Generation](#-project-generation)
+- [Quick Start](#-quick-start)
+- [Installation Guide](#-installation-guide)
 - [YAML Configuration](#-yaml-configuration)
-- [Tuist Templates](#-tuist-templates)
-- [Usage](#-usage)
-- [Roadmap](#-roadmap)
+- [Project Structure](#-project-structure)
+- [How It Works](#-how-it-works)
+- [Step-by-Step Tutorial](#-step-by-step-tutorial)
+- [Template Types Reference](#-template-types-reference)
+- [Customization](#-customization)
 - [Contributing](#-contributing)
 - [License](#-license)
+- [Authors](#-authors)
+
+---
+
+## 🎯 Why Use This Skeleton?
+
+### The Problem
+
+Starting a new iOS project often involves:
+- ⏰ Hours of manual folder creation
+- 📁 Inconsistent project structures across teams
+- 🔄 Repetitive boilerplate code writing
+- 📝 Difficulty documenting architecture decisions
+- 🚫 No version control for project structure
+
+### The Solution
+
+This skeleton provides:
+- ⚡ **Instant Setup** - Generate complete project structure in seconds
+- 📐 **YAML-Driven** - Define architecture in a single, readable file
+- 🔄 **Reproducible** - Same structure across all environments
+- 📚 **Well-Documented** - Architecture as code
+- 🎨 **Template System** - Pre-built file templates for common patterns
+- 🛠️ **Tuist Integration** - Professional project management
 
 ---
 
 ## ✨ Features
 
-- ✅ **Authentication** - User login and registration
-- ✅ **Post Feed** - Infinite scroll with images and videos
-- ✅ **Search & Explore** - Find users and content
-- ✅ **Create Posts** - Capture photos or select from gallery
-- ✅ **Stories** - 24-hour temporary content
-- ✅ **Profiles** - View and edit user profiles
-- ✅ **Notifications** - Real-time activity system
-- ✅ **Likes & Comments** - Complete social interaction
+- ✅ **YAML-Driven Architecture** - Define your entire project structure in a single YAML file
+- ✅ **Automated Generation** - Scripts automatically create folders and files from YAML
+- ✅ **Tuist Integration** - Professional project management and generation
+- ✅ **MVVM Pattern** - Clean architecture with clear separation of concerns
+- ✅ **SwiftUI Ready** - Modern declarative UI framework
+- ✅ **Modular Structure** - Feature-based organization for scalability
+- ✅ **Template System** - Reusable templates with predefined content
+- ✅ **Version Controlled** - Architecture definition tracked in Git
+- ✅ **Customizable** - Easy to extend with your own templates
+- ✅ **Test Ready** - Includes test structure and templates
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture Overview
 
-### MVVM (Model-View-ViewModel)
-
-This project implements a clean MVVM architecture with the following layers:
+### MVVM (Model-View-ViewModel) Pattern
 
 ```
 ┌─────────────────────────────────────────┐
@@ -69,516 +96,887 @@ This project implements a clean MVVM architecture with the following layers:
 │        Models + Networking              │
 │         (Data Layer)                    │
 └─────────────────────────────────────────┘
+
 ```
 
-### Design Principles
+### Key Architectural Components
 
-- **Separation of Concerns**: Each layer has clear responsibilities
-- **Dependency Injection**: Facilitates testing and modularity
-- **Coordinator Pattern**: Centralized navigation management
-- **Protocol-Oriented**: Clear and testable interfaces
-- **Reactive Programming**: Combine for reactive data flow
+| Component | Responsibility | Example |
+|-----------|---------------|---------|
+| **Views** | UI presentation and user input | `LoginView.swift` |
+| **ViewModels** | Business logic and state management | `LoginViewModel.swift` |
+| **Models** | Data structures and entities | `User.swift` |
+| **Services** | Data access and external communication | `AuthenticationService.swift` |
+| **Core** | Shared utilities and base functionality | `NetworkManager.swift` |
 
 ---
 
 ## 📦 Requirements
 
+### System Requirements
+
+- **macOS**: 13.0 (Ventura) or later
+- **Xcode**: 15.0 or later
+- **Swift**: 5.9 or later
+
 ### Required Tools
 
-| Tool | Version | Purpose |
-|------|---------|---------|
-| **Xcode** | 15.0+ | Development IDE |
-| **Swift** | 5.9+ | Programming language |
-| **Tuist** | 4.0+ | Project generation and management |
-| **yq** | 4.0+ | YAML file processing |
-| **Git** | 2.0+ | Version control |
+| Tool | Version | Purpose | Installation |
+|------|---------|---------|--------------|
+| **Tuist** | 4.0+ | Project generation and management | `curl -Ls https://install.tuist.io \| bash` |
+| **yq** | 4.0+ | YAML file processing | `brew install yq` |
+| **Git** | 2.0+ | Version control | Pre-installed on macOS |
 
-### Dependency Installation
+### Verification
+
+After installation, verify all tools are properly installed:
 
 ```bash
-# Install Tuist
+# Check Tuist installation
+tuist version
+# Expected output: 4.x.x
+
+# Check yq installation
+yq --version
+# Expected output: yq (https://github.com/mikefarah/yq/) version 4.x.x
+
+# Check Git installation
+git --version
+# Expected output: git version 2.x.x
+```
+
+---
+
+## 🚀 Quick Start
+
+Get up and running in under 2 minutes:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/ios-project-skeleton.git
+cd ios-project-skeleton
+
+# 2. Make scripts executable
+chmod +x scripts/generate_structure.sh
+
+# 3. Generate project structure
+./scripts/generate_structure.sh architecture.yml
+
+# 4. Generate Xcode project with Tuist
+tuist generate
+
+# 5. Open in Xcode
+open YourProjectName.xcworkspace
+```
+
+That's it! Your project is ready to go. 🎉
+
+---
+
+## 📥 Installation Guide
+
+### Step 1: Install Dependencies
+
+#### Install Tuist
+
+Tuist is a command-line tool that helps you manage your Xcode projects.
+
+```bash
+# Install using the official installer
 curl -Ls https://install.tuist.io | bash
 
-# Install yq (macOS)
+# Verify installation
+tuist version
+```
+
+**What is Tuist?**
+- Generates Xcode projects from code
+- Manages dependencies
+- Provides project templates
+- Enables reproducible builds
+
+#### Install yq
+
+yq is a YAML processor that allows us to read and manipulate YAML files.
+
+```bash
+# Install using Homebrew
 brew install yq
 
-# Verify installations
-tuist version
+# Verify installation
 yq --version
 ```
 
----
+**What is yq?**
+- Parses YAML files
+- Extracts values from YAML structure
+- Enables scripting with YAML configurations
 
-## 🚀 Installation
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-username/instagram-clone.git
-cd instagram-clone
-```
-
-### 2. Configure Architecture
-
-The project uses a YAML file to define the directory structure:
+### Step 2: Clone the Repository
 
 ```bash
-# The architecture.yml file defines the entire structure
-cat architecture.yml
+# Clone the skeleton repository
+git clone https://github.com/your-username/ios-project-skeleton.git
+
+# Navigate to project directory
+cd ios-project-skeleton
+
+# Check repository structure
+ls -la
 ```
 
-**Example `architecture.yml`:**
-
-```yaml
-project_name: InstagramClone
-
-structure:
-  - App:
-      - InstagramCloneApp.swift
-      - AppCoordinator.swift
-
-  - Core:
-      - Networking:
-          - NetworkManager.swift
-          - APIEndpoint.swift
-          - HTTPMethod.swift
-          - NetworkError.swift
-      - Storage:
-          - UserDefaultsManager.swift
-          - KeychainManager.swift
-          - PersistenceController.swift
-      - Extensions:
-          - View+Extensions.swift
-          - Color+Extensions.swift
-      - Utilities:
-          - Constants.swift
-          - ImageCache.swift
-
-  - Models:
-      - User.swift
-      - Post.swift
-      - Comment.swift
-      - Story.swift
-
-  - Features:
-      - Authentication:
-          - ViewModels:
-              - LoginViewModel.swift
-              - RegisterViewModel.swift
-          - Views:
-              - LoginView.swift
-              - RegisterView.swift
-          - AuthCoordinator.swift
-
-      - Feed:
-          - ViewModels:
-              - FeedViewModel.swift
-          - Views:
-              - FeedView.swift
-          - FeedCoordinator.swift
-
-  - Services:
-      - AuthenticationService.swift
-      - PostService.swift
-      - UserService.swift
-
-  - Shared:
-      - Components:
-          - CustomButton.swift
-          - CustomTextField.swift
-      - Views:
-          - LoadingView.swift
-          - ErrorView.swift
-
-  - Navigation:
-      - Router.swift
-      - NavigationState.swift
-
-  - Resources:
-      - Assets.xcassets:
-      - Fonts:
+You should see:
+```
+.
+├── README.md
+├── architecture.yml          # Your project structure definition
+├── Project.swift            # Tuist project configuration
+├── Tuist/                   # Tuist configuration files
+│   └── Templates/           # File templates
+└── scripts/
+    └── generate_structure.sh # Structure generation script
 ```
 
-### 3. Generate Folder Structure
+### Step 3: Understand the Files
 
-Run the script that reads the YAML file and creates all directories:
+Before generating your project, familiarize yourself with key files:
 
-```bash
-# Grant execution permissions
-chmod +x scripts/generate_structure.sh
-
-# Generate structure from YAML
-./scripts/generate_structure.sh architecture.yml
-```
-
-This script uses `yq` to parse the YAML and automatically create the entire hierarchy of folders and files.
-
-### 4. Generate Project with Tuist
-
-```bash
-# Install Tuist dependencies (if any)
-tuist install
-
-# Generate Xcode project
-tuist generate
-```
-
-### 5. Open in Xcode
-
-```bash
-open InstagramClone.xcworkspace
-```
-
----
-
-## 📁 Project Structure
-
-```
-InstagramClone/
-├── App/                          # Application configuration
-│   ├── InstagramCloneApp.swift   # Entry point
-│   └── AppCoordinator.swift      # Main coordinator
-│
-├── Core/                         # Base functionality
-│   ├── Networking/               # Network layer
-│   ├── Storage/                  # Data persistence
-│   ├── Extensions/               # Swift/SwiftUI extensions
-│   └── Utilities/                # Helpers and utilities
-│
-├── Models/                       # Data models
-│   ├── User.swift
-│   ├── Post.swift
-│   └── ...
-│
-├── Features/                     # Feature modules
-│   ├── Authentication/
-│   │   ├── ViewModels/
-│   │   ├── Views/
-│   │   └── AuthCoordinator.swift
-│   ├── Feed/
-│   ├── Search/
-│   ├── Profile/
-│   └── Stories/
-│
-├── Services/                     # Business services
-│   ├── AuthenticationService.swift
-│   ├── PostService.swift
-│   └── ...
-│
-├── Shared/                       # Shared components
-│   ├── Views/
-│   ├── Components/
-│   ├── Modifiers/
-│   └── Protocols/
-│
-├── Navigation/                   # Navigation system
-│   ├── Router.swift
-│   └── NavigationState.swift
-│
-├── Resources/                    # Project resources
-│   ├── Assets.xcassets/
-│   └── Fonts/
-│
-├── Tuist/                        # Tuist configuration
-│   ├── Config.swift
-│   ├── Dependencies.swift
-│   └── Templates/
-│
-├── scripts/                      # Automation scripts
-│   └── generate_structure.sh
-│
-├── architecture.yml              # Architecture definition
-├── Project.swift                 # Tuist project configuration
-└── README.md
-```
-
----
-
-## 🔧 Project Generation
-
-### Complete Workflow
-
-```mermaid
-graph LR
-    A[architecture.yml] --> B[generate_structure.sh]
-    B --> C[Folder Structure]
-    C --> D[Tuist Templates]
-    D --> E[tuist generate]
-    E --> F[Xcode Project]
-```
-
-### Detailed Step-by-Step
-
-#### 1. **Define Architecture in YAML**
-
-Create or modify `architecture.yml` with the desired structure:
-
-```yaml
-project_name: MyApp
-
-structure:
-  - MyModule:
-      - ViewModels:
-          - MyViewModel.swift
-      - Views:
-          - MyView.swift
-```
-
-#### 2. **Generate Structure with Script**
-
-The `generate_structure.sh` script processes the YAML:
-
-```bash
-#!/bin/bash
-
-# Script that uses yq to read YAML and create folders
-YAML_FILE=$1
-
-# Extract project name
-PROJECT_NAME=$(yq '.project_name' $YAML_FILE)
-
-# Create structure recursively
-yq -r '.structure[] | to_entries[] | .key' $YAML_FILE | while read folder; do
-    mkdir -p "$folder"
-    echo "✓ Created: $folder"
-done
-
-echo "✅ Structure generated successfully"
-```
-
-Execute:
-```bash
-./scripts/generate_structure.sh architecture.yml
-```
-
-#### 3. **Configure Tuist**
-
-**`Project.swift`:**
-
-```swift
-import ProjectDescription
-
-let project = Project(
-    name: "InstagramClone",
-    targets: [
-        Target(
-            name: "InstagramClone",
-            platform: .iOS,
-            product: .app,
-            bundleId: "com.yourapp.instagramclone",
-            deploymentTarget: .iOS(targetVersion: "16.0", devices: [.iphone]),
-            infoPlist: .default,
-            sources: ["Sources/**"],
-            resources: ["Resources/**"],
-            dependencies: []
-        )
-    ]
-)
-```
-
-#### 4. **Use Tuist Templates (Optional)**
-
-```bash
-# Create custom template
-tuist edit
-
-# Scaffold from template
-tuist scaffold mvvm-feature --name Profile
-```
-
-#### 5. **Generate Project**
-
-```bash
-tuist generate
-```
-
-This will create:
-- `InstagramClone.xcodeproj`
-- `InstagramClone.xcworkspace`
-- Scheme configurations
+| File | Purpose |
+|------|---------|
+| `architecture.yml` | Defines your entire project structure |
+| `Project.swift` | Configures Tuist project settings |
+| `generate_structure.sh` | Script that creates folders/files from YAML |
+| `Tuist/Templates/` | Contains file templates for code generation |
 
 ---
 
 ## ⚙️ YAML Configuration
 
-### Syntax and Conventions
+### Configuration Structure
+
+The `architecture.yml` file is the heart of your project structure. It uses a simple, hierarchical format:
 
 ```yaml
-project_name: ProjectName         # Project name
+name: "YourProjectName"           # Project name
+author: "Your Name"               # Your name
+description: "Project description" # Brief description
 
-structure:
-  - Folder:                       # Main folder
-      - Subfolder:                # Subfolder
-          - File.swift            # Swift file
-      - OtherFile.swift           # File in main folder
+build:
+  Tests:          # Test files
+  Sources:        # Source code
+  Resources:      # Assets and resources
+```
+
+### Understanding the YAML Format
+
+#### Basic Syntax
+
+```yaml
+# This is a comment
+
+# Key-value pair
+key: value
+
+# Nested structure (folder)
+FolderName:
+  SubfolderName:
+    # File definition
+    FileName:
+      file: "ActualFileName.swift"
+      type: "template_type"
+```
+
+#### Key Concepts
+
+1. **Indentation = Hierarchy**
+   - 2 spaces = one level deeper
+   - Represents folder nesting
+
+2. **`file` Field**
+   - Specifies the actual filename
+   - Example: `file: "LoginView.swift"`
+
+3. **`type` Field**
+   - Determines which template to use
+   - Example: `type: "view"` generates SwiftUI View boilerplate
+
+### Complete Configuration Example
+
+Here's the full structure with detailed annotations:
+
+```yaml
+# ============================================
+# PROJECT METADATA
+# ============================================
+name: "InstagramClone"
+author: "Reinner Steven Daza Leiva"
+description: "This is a skeleton app"
+
+build:
+  # ==========================================
+  # TEST TARGET
+  # ==========================================
+  Tests:
+    Example:
+      file: "ExampleTest.swift"
+      type: "test"                    # Generates XCTestCase
   
-  - AnotherFolder:
-      - file.swift
+  # ==========================================
+  # SOURCE CODE
+  # ==========================================
+  Sources:
+    # Main application entry point
+    file: "ProjectApp.swift"
+    type: "main"                      # Generates @main App struct
+
+    # Application code folder
+    Application:
+      
+      # ========================================
+      # CORE - Base Functionality
+      # ========================================
+      Core:
+        # Networking Layer
+        Networking:
+          NetworkManager:
+            file: "NetworkManager.swift"
+            type: "class"             # Generates class template
+          APIEndpoint:
+            file: "APIEndpoint.swift"
+            type: "class"
+          HTTPMethod:
+            file: "HTTPMethod.swift"
+            type: "class"
+        
+        # Storage Layer (Persistence)
+        Storage:
+          UserDefaultsManager:
+            file: "UserDefaultsManager.swift"
+            type: "class"
+          KeychainManager:
+            file: "KeychainManager.swift"
+            type: "class"
+          CoreData:
+            file: "CoreData.swift"
+            type: "class"
+        
+        # Swift Extensions
+        Extensions:
+          Views:
+            file: "ViewExtension.swift"
+            type: "class"
+        
+        # Utility Classes
+        Utilities:
+          Constants:
+            file: "Logger.swift"
+            type: "class"
+      
+      # ========================================
+      # MODELS - Data Structures
+      # ========================================
+      Models:
+        UserEntity:
+          file: "UserEntity.swift"
+          type: "model"               # Generates Codable struct
+      
+      # ========================================
+      # FEATURES - App Modules
+      # ========================================
+      Features:
+        # Splash Screen Feature
+        Splash:
+          Views:
+            SplashView:
+              file: "SplashView.swift"
+              type: "view"            # Generates SwiftUI View
+          ViewMode:
+            SplashViewModel:
+              file: "SplashViewModel.swift"
+              type: "class"
+        
+        # Authentication Feature
+        Authentication:
+          Views:
+            Login:
+              file: "LoginView.swift"
+              type: "view"
+            Registre:
+              file: "RegisterView.swift"
+              type: "view"
+          ViewMode:
+            LoginViewModel:
+              file: "LoginViewModel.swift"
+              type: "class"
+            RegisterViewModel:
+              file: "RegisterViewModel.swift"
+              type: "class"
+      
+      # ========================================
+      # SERVICES - Business Logic
+      # ========================================
+      Services:
+        AuthenticationService:
+          file: "AuthenticationService.swift"
+          type: "class"
+        AnyService:
+          file: "AnyService.swift"
+          type: "class"
+        UserService:
+          file: "UserService.swift"
+          type: "class"
+      
+      # ========================================
+      # SHARED - Reusable Components
+      # ========================================
+      Shared:
+        Components:
+          Button:
+            file: "CustomButton.swift"
+            type: "class"
+          TextField:
+            file: "CustomTextField.swift"
+            type: "class"
+        Modifiers:
+          Card:
+            file: "CardModifier.swift"
+            type: "class"
+
+  # ==========================================
+  # RESOURCES
+  # ==========================================
+  Resources:
+    # Asset Catalog
+    Assets.xcassets:
+      file: "Contents.json"
+      type: "Assets_xcassets"
+      
+      # Accent Color
+      AccentColor.colorset:
+        file: "Contents.json"
+        type: "AccentColor_colorset"
+      
+      # App Icon
+      AppIcon.appiconset:
+        file: "Contents.json"
+        type: "AppIcon_appiconset"
+    
+    # Preview Assets for SwiftUI
+    Preview Content:
+      Preview Assets.xcassets:
+        file: "Contents.json"
+        type: "Preview_Assets_xcassets"
 ```
 
-### Complete Feature Example
+### Field Reference
 
-```yaml
-structure:
-  - Features:
-      - Profile:
-          - ViewModels:
-              - ProfileViewModel.swift
-              - EditProfileViewModel.swift
-          - Views:
-              - ProfileView.swift
-              - Components:
-                  - ProfileHeaderView.swift
-                  - ProfileStatsView.swift
-          - ProfileCoordinator.swift
+| Field | Type | Required | Description | Example |
+|-------|------|----------|-------------|---------|
+| `name` | String | ✅ | Project name | `"MyApp"` |
+| `author` | String | ❌ | Author name | `"John Doe"` |
+| `description` | String | ❌ | Project description | `"A great app"` |
+| `file` | String | ✅* | Filename to create | `"LoginView.swift"` |
+| `type` | String | ✅* | Template type | `"view"` |
+
+*Required when defining a file, not needed for folders
+
+type: main | view | class | model
+
+---
+## 📁 Project Structure
+
+### Generated Folder Hierarchy
+
+When you run the generation script, this is the structure created:
+
+```
+YourProjectName/
+│
+├── Tests/                              # Unit and UI tests
+│   └── Example/
+│       └── ExampleTest.swift
+│
+├── Sources/                            # Main source code
+│   ├── ProjectApp.swift                # App entry point (@main)
+│   │
+│   └── Application/
+│       │
+│       ├── Core/                       # Core functionality
+│       │   ├── Networking/             # Network layer
+│       │   │   ├── NetworkManager.swift
+│       │   │   ├── APIEndpoint.swift
+│       │   │   └── HTTPMethod.swift
+│       │   │
+│       │   ├── Storage/                # Data persistence
+│       │   │   ├── UserDefaultsManager.swift
+│       │   │   ├── KeychainManager.swift
+│       │   │   └── CoreData.swift
+│       │   │
+│       │   ├── Extensions/             # Swift extensions
+│       │   │   └── ViewExtension.swift
+│       │   │
+│       │   └── Utilities/              # Helper classes
+│       │       └── Logger.swift
+│       │
+│       ├── Models/                     # Data models
+│       │   └── UserEntity.swift
+│       │
+│       ├── Features/                   # Feature modules
+│       │   │
+│       │   ├── Splash/                 # Splash screen
+│       │   │   ├── Views/
+│       │   │   │   └── SplashView.swift
+│       │   │   └── ViewMode/
+│       │   │       └── SplashViewModel.swift
+│       │   │
+│       │   └── Authentication/         # Auth feature
+│       │       ├── Views/
+│       │       │   ├── LoginView.swift
+│       │       │   └── RegisterView.swift
+│       │       └── ViewMode/
+│       │           ├── LoginViewModel.swift
+│       │           └── RegisterViewModel.swift
+│       │
+│       ├── Services/                   # Business services
+│       │   ├── AuthenticationService.swift
+│       │   ├── AnyService.swift
+│       │   └── UserService.swift
+│       │
+│       └── Shared/                     # Shared components
+│           ├── Components/
+│           │   ├── CustomButton.swift
+│           │   └── CustomTextField.swift
+│           └── Modifiers/
+│               └── CardModifier.swift
+│
+└── Resources/                          # App resources
+    ├── Assets.xcassets/                # Asset catalog
+    │   ├── Contents.json
+    │   ├── AccentColor.colorset/
+    │   │   └── Contents.json
+    │   └── AppIcon.appiconset/
+    │       └── Contents.json
+    │
+    └── Preview Content/                # SwiftUI previews
+        └── Preview Assets.xcassets/
+            └── Contents.json
 ```
 
-### YAML Approach Advantages
+### Folder Responsibilities
 
-✅ **Declarative**: Defines structure clearly
-✅ **Versionable**: Trackable changes in Git
-✅ **Reproducible**: Same structure on any machine
-✅ **Documentation**: Serves as project reference
-✅ **Automatable**: Easy to process with scripts
+| Folder | Purpose | What Goes Here |
+|--------|---------|----------------|
+| **Tests/** | Testing | Unit tests, UI tests, integration tests |
+| **Core/** | Foundation | Networking, storage, utilities, extensions |
+| **Models/** | Data | Entity definitions, data structures |
+| **Features/** | Modules | Feature-specific Views, ViewModels, logic |
+| **Services/** | Business Logic | API services, data services, repositories |
+| **Shared/** | Reusables | Common UI components, modifiers, helpers |
+| **Resources/** | Assets | Images, colors, fonts, config files |
 
 ---
 
-## 🎨 Tuist Templates
+## ⚡ How It Works
 
-### Template Structure
+### The Generation Workflow
 
+```mermaid
+graph TD
+    A[📄 architecture.yml] -->|1. Read| B[🔧 build.sh]
+    B -->|2. Parse with yq| C[📊 Extract Structure]
+    C -->|3. Create Folders| D[📁 Directory Tree]
+    D -->|4. Generate Files| E[📝 Files with Templates]
+    E -->|5. Tuist Generate| F[🎯 Xcode Project]
+    F -->|6. Open| G[💻 Ready to Code]
 ```
-Tuist/Templates/
-└── mvvm-feature/
-    ├── mvvm-feature.swift        # Template definition
-    └── Templates/
-        ├── ViewModel.stencil     # ViewModel template
-        ├── View.stencil          # View template
-        └── Coordinator.stencil   # Coordinator template
+
+
+## 📚 Step-by-Step Tutorial
+
+### Tutorial: Creating a New Project from Scratch
+
+Let's create a simple Todo app to understand the complete workflow.
+
+#### Step 1: Clone and Setup
+
+```bash
+# Clone the skeleton
+git clone https://github.com/your-username/ios-project-skeleton.git
+cd ios-project-skeleton
+
+# Make script executable
+chmod +x scripts/generate_structure.sh
 ```
 
-### Template Example
+#### Step 2: Customize YAML Configuration
 
-**`mvvm-feature.swift`:**
+Edit `architecture.yml` to define your Todo app structure:
+
+```yaml
+name: "TodoApp"
+author: "Your Name"
+description: "A simple todo application"
+
+build:
+  Tests:
+    TodoTests:
+      file: "TodoTests.swift"
+      type: "test"
+  
+  Sources:
+    file: "TodoAppApp.swift"
+    type: "main"
+    
+    Application:
+      Core:
+        Storage:
+          PersistenceController:
+            file: "PersistenceController.swift"
+            type: "class"
+      
+      Models:
+        Todo:
+          file: "Todo.swift"
+          type: "model"
+      
+      Features:
+        TodoList:
+          Views:
+            TodoListView:
+              file: "TodoListView.swift"
+              type: "view"
+            TodoRowView:
+              file: "TodoRowView.swift"
+              type: "view"
+          ViewMode:
+            TodoListViewModel:
+              file: "TodoListViewModel.swift"
+              type: "class"
+      
+      Services:
+        TodoService:
+          file: "TodoService.swift"
+          type: "class"
+      
+      Shared:
+        Components:
+          AddButton:
+            file: "AddButton.swift"
+            type: "class"
+  
+  Resources:
+    Assets.xcassets:
+      file: "Contents.json"
+      type: "Assets_xcassets"
+```
+
+#### Step 3: Generate Structure
+
+```bash
+# Run the generation script
+./build.sh
+
+# You should see output like:
+# ✓ Creating folder: Tests/TodoTests
+# ✓ Creating file: TodoTests.swift
+# ✓ Creating folder: Sources/Application/Core/Storage
+# ✓ Creating file: PersistenceController.swift
+# ... etc
+```
+
+#### Step 4: Verify Structure
+
+```bash
+# Check generated structure
+tree Sources
+
+# Output:
+# Sources/
+# ├── TodoAppApp.swift
+# └── Application/
+#     ├── Core/
+#     │   └── Storage/
+#     │       └── PersistenceController.swift
+#     ├── Models/
+#     │   └── Todo.swift
+#     ├── Features/
+#     │   └── TodoList/
+#     │       ├── Views/
+#     │       │   ├── TodoListView.swift
+#     │       │   └── TodoRowView.swift
+#     │       └── ViewMode/
+#     │           └── TodoListViewModel.swift
+#     ├── Services/
+#     │   └── TodoService.swift
+#     └── Shared/
+#         └── Components/
+#             └── AddButton.swift
+```
+
+#### Step 5: Configure Tuist Project
+
+Create or edit `Project.swift`:
 
 ```swift
+import Foundation
 import ProjectDescription
 
-let nameAttribute: Template.Attribute = .required("name")
+// MARK: - Base Settings
 
-let template = Template(
-    description: "MVVM Feature Template",
-    attributes: [nameAttribute],
-    items: [
-        .file(
-            path: "Features/\(nameAttribute)/ViewModels/\(nameAttribute)ViewModel.swift",
-            templatePath: "ViewModel.stencil",
-            context: ["fileName": "\(nameAttribute)ViewModel.swift"]
-        ),
-        .file(
-            path: "Features/\(nameAttribute)/Views/\(nameAttribute)View.swift",
-            templatePath: "View.stencil",
-            context: ["fileName": "\(nameAttribute)View.swift"]
+private let name = "InstagramClone"
+private let bundleIdentifier = "com.rsdl.project"
+private let organization = "rsdl"
+
+let baseSettings: SettingsDictionary = [:]
+
+
+
+// MARK: - Project Definition
+let project = Project(
+    name: "\(name)",
+    organizationName: "\(organization)", options: .options(
+        automaticSchemesOptions: .enabled(
+            codeCoverageEnabled: true
         )
-    ]
+    ),
+    settings: .settings(
+        base: getBasicSettings(),
+        configurations: [
+            .debug(name: "Debug",
+                   settings: debugSettings(),
+                   xcconfig: "Configuration/xcconfigs/Debug.xcconfig"),
+            .debug(name: "Staging",
+                   settings: stagingSettings(),
+                   xcconfig: "Configuration/xcconfigs/Staging.xcconfig"),
+            .release(name: "Release",
+                     settings: releaseSettings(),
+                     xcconfig: "Configuration/xcconfigs/Release.xcconfig")
+        ]
+    ),
+  ...
+  ...
+  ]
 )
 ```
 
-**`ViewModel.stencil`:**
+#### Step 6: Generate Xcode Project
 
+```bash
+# Generate the Xcode project
+tuist generate
+
+# Output:
+# Generating project TodoApp
+# Project generated at /path/to/TodoApp.xcworkspace
+```
+
+#### Step 7: Open and Build
+
+```bash
+# Open in Xcode
+open TodoApp.xcworkspace
+
+# Or build from command line
+tuist build
+```
+
+#### Step 8: Start Coding!
+
+Now you have a complete project structure ready. Open any generated file and start implementing:
+
+---
+
+## 🎨 Template Types Reference
+
+### Available Templates
+
+The `type` field determines which template is used to generate file content. Here's the complete reference:
+
+#### 1. `main` - Application Entry Point
+
+**Usage:**
+```yaml
+file: "MyAppApp.swift"
+type: "main"
+```
+
+**Generated Code:**
 ```swift
-// {{ fileName }}
-// {{ name }}
-// Generated by Tuist
+import SwiftUI
 
-import Foundation
-import Combine
-
-final class {{ name }}ViewModel: ObservableObject {
-    // MARK: - Published Properties
-    @Published var isLoading = false
-    @Published var error: Error?
-    
-    // MARK: - Initialization
-    init() {
-        // Setup
-    }
-    
-    // MARK: - Methods
-    func loadData() {
-        // Implementation
+@main
+struct MyAppApp: App {
+    var body: some Scene {
+        WindowGroup {
+            SplashView()
+        }
     }
 }
 ```
 
-### Using Templates
-
-```bash
-tuist scaffold mvvm-feature --name Profile
-```
+**When to use:** Only once, for your main app file.
 
 ---
 
-## 💻 Usage
+#### 2. `view` - SwiftUI View
 
-### Running the Application
-
-```bash
-# Open project
-tuist generate
-open InstagramClone.xcworkspace
-
-# Or directly
-tuist run
-```
-
-### Adding a New Feature
-
-1. **Update `architecture.yml`:**
-
+**Usage:**
 ```yaml
-  - Features:
-      - NewFeature:
-          - ViewModels:
-              - NewFeatureViewModel.swift
-          - Views:
-              - NewFeatureView.swift
+file: "LoginView.swift"
+type: "view"
 ```
 
-2. **Regenerate structure:**
+**Generated Code:**
+```swift
+import SwiftUI
 
-```bash
-./scripts/generate_structure.sh architecture.yml
+struct LoginView: View {
+    var body: some View {
+        Text("LoginView")
+    }
+}
+
+#Preview {
+    LoginView()
+}
 ```
 
-3. **Implement code in created files**
-
-### Testing
-
-```bash
-# Run tests
-tuist test
-
-# With coverage
-tuist test --coverage
-```
+**When to use:** For any SwiftUI view component.
 
 ---
 
-## 🗺️ Roadmap
+#### 3. `class` - Swift Class
 
-- [ ] Firebase integration
-- [ ] Direct messaging implementation
-- [ ] Reels and short videos
-- [ ] Real-time camera filters
-- [ ] Custom dark mode
-- [ ] Complete internationalization
-- [ ] Unit tests (80%+ coverage)
-- [ ] UI tests with Snapshot Testing
-- [ ] CI/CD with GitHub Actions
-- [ ] Complete documentation with DocC
+**Usage:**
+```yaml
+file: "NetworkManager.swift"
+type: "class"
+```
+
+**Generated Code:**
+```swift
+import Foundation
+
+final class NetworkManager {
+    
+    // MARK: - Properties
+    
+    // MARK: - Initialization
+    init() {
+        
+    }
+    
+    // MARK: - Methods
+}
+```
+
+**When to use:** For ViewModels, Services, Managers, Utilities.
 
 ---
+
+#### 4. `model` - Data Model
+
+**Usage:**
+```yaml
+file: "User.swift"
+type: "model"
+```
+
+**Generated Code:**
+```swift
+import Foundation
+
+struct User: Identifiable, Codable {
+    let id: UUID
+    
+    init(id: UUID = UUID()) {
+        self.id = id
+    }
+}
+```
+
+**When to use:** For entity definitions and data structures.
+
+---
+
+#### 5. `test` - Unit Test
+
+**Usage:**
+```yaml
+file: "LoginViewModelTests.swift"
+type: "test"
+```
+
+**Generated Code:**
+```swift
+import XCTest
+@testable import YourApp
+
+final class LoginViewModelTests: XCTestCase {
+    
+    override func setUp() {
+        super.setUp()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+    }
+    
+    func testExample() {
+        XCTAssertTrue(true)
+    }
+}
+```
+
+**When to use:** For test files.
+
+---
+
+### Template Type Summary
+
+| Type | Use Case | Location Example |
+|------|----------|------------------|
+| `main` | App entry point | `Sources/AppName.swift` |
+| `view` | SwiftUI views | `Features/*/Views/*.swift` |
+| `class` | Classes (ViewModels, Services) | `Features/*/ViewMode/*.swift` |
+| `model` | Data structures | `Models/*.swift` |
+| `test` | Test cases | `Tests/**/*.swift` |
+| `Assets_xcassets` | Asset catalog root | `Resources/Assets.xcassets/` |
+| `AccentColor_colorset` | Accent color | `Assets.xcassets/AccentColor.colorset/` |
+| `AppIcon_appiconset` | App icon | `Assets.xcassets/AppIcon.appiconset/` |
+
+---
+
+## 🎯 Customization
+
+### Adding New Features to Existing Project
+
+#### Option 1: Update YAML and Regenerate
+
+1. **Edit** `architecture.yml`:
+```yaml
+Features:
+  # Add new feature
+  Settings:
+    Views:
+      SettingsView:
+        file: "SettingsView.swift"
+        type: "view"
+    ViewMode:
+      SettingsViewModel:
+        file: "SettingsViewModel.swift"
+        type: "class"
+```
+
+2. **Regenerate**:
+```bash
+./build.sh
+```
+
+3. **Update Tuist**:
+```bash
+tuist generate
+```
 
 ## 🤝 Contributing
 
@@ -608,7 +1006,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## 👥 Authors
 
-- **Your Name** - *Initial development* - [GitHub](https://github.com/your-username)
+- **Reinner Steven Daza Leiva** - *Initial development* - [GitHub](https://github.com/your-username)
 
 ---
 
