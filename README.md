@@ -6,45 +6,45 @@
 ![SwiftUI](https://img.shields.io/badge/UI-SwiftUI-purple.svg)
 ![Tuist](https://img.shields.io/badge/Build%20Tool-Tuist-red.svg)
 
-Un clon completo de Instagram desarrollado en SwiftUI utilizando arquitectura MVVM limpia y escalable. Este proyecto demuestra las mejores prácticas en desarrollo iOS moderno, incluyendo generación automatizada de proyectos con Tuist y gestión de arquitectura mediante archivos YAML.
+A complete Instagram clone developed in SwiftUI using clean and scalable MVVM architecture. This project demonstrates best practices in modern iOS development, including automated project generation with Tuist and architecture management through YAML files.
 
 ---
 
-## 📋 Tabla de Contenidos
+## 📋 Table of Contents
 
-- [Características](#-características)
-- [Arquitectura](#-arquitectura)
-- [Requisitos](#-requisitos)
-- [Instalación](#-instalación)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Generación del Proyecto](#-generación-del-proyecto)
-- [Configuración YAML](#-configuración-yaml)
-- [Templates de Tuist](#-templates-de-tuist)
-- [Uso](#-uso)
+- [Features](#-features)
+- [Architecture](#-architecture)
+- [Requirements](#-requirements)
+- [Installation](#-installation)
+- [Project Structure](#-project-structure)
+- [Project Generation](#-project-generation)
+- [YAML Configuration](#-yaml-configuration)
+- [Tuist Templates](#-tuist-templates)
+- [Usage](#-usage)
 - [Roadmap](#-roadmap)
-- [Contribución](#-contribución)
-- [Licencia](#-licencia)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
-## ✨ Características
+## ✨ Features
 
-- ✅ **Autenticación** - Login y registro de usuarios
-- ✅ **Feed de Posts** - Infinite scroll con imágenes y videos
-- ✅ **Búsqueda y Exploración** - Encuentra usuarios y contenido
-- ✅ **Crear Posts** - Captura fotos o selecciona de la galería
-- ✅ **Stories** - Contenido temporal de 24 horas
-- ✅ **Perfiles** - Visualización y edición de perfiles
-- ✅ **Notificaciones** - Sistema de actividad en tiempo real
-- ✅ **Likes y Comentarios** - Interacción social completa
+- ✅ **Authentication** - User login and registration
+- ✅ **Post Feed** - Infinite scroll with images and videos
+- ✅ **Search & Explore** - Find users and content
+- ✅ **Create Posts** - Capture photos or select from gallery
+- ✅ **Stories** - 24-hour temporary content
+- ✅ **Profiles** - View and edit user profiles
+- ✅ **Notifications** - Real-time activity system
+- ✅ **Likes & Comments** - Complete social interaction
 
 ---
 
-## 🏗️ Arquitectura
+## 🏗️ Architecture
 
 ### MVVM (Model-View-ViewModel)
 
-Este proyecto implementa una arquitectura MVVM limpia con las siguientes capas:
+This project implements a clean MVVM architecture with the following layers:
 
 ```
 ┌─────────────────────────────────────────┐
@@ -71,63 +71,63 @@ Este proyecto implementa una arquitectura MVVM limpia con las siguientes capas:
 └─────────────────────────────────────────┘
 ```
 
-### Principios de Diseño
+### Design Principles
 
-- **Separation of Concerns**: Cada capa tiene responsabilidades claras
-- **Dependency Injection**: Facilita testing y modularidad
-- **Coordinator Pattern**: Gestión centralizada de navegación
-- **Protocol-Oriented**: Interfaces claras y testables
-- **Reactive Programming**: Combine para flujo de datos reactivo
+- **Separation of Concerns**: Each layer has clear responsibilities
+- **Dependency Injection**: Facilitates testing and modularity
+- **Coordinator Pattern**: Centralized navigation management
+- **Protocol-Oriented**: Clear and testable interfaces
+- **Reactive Programming**: Combine for reactive data flow
 
 ---
 
-## 📦 Requisitos
+## 📦 Requirements
 
-### Herramientas Necesarias
+### Required Tools
 
-| Herramienta | Versión | Propósito |
-|------------|---------|-----------|
-| **Xcode** | 15.0+ | IDE de desarrollo |
-| **Swift** | 5.9+ | Lenguaje de programación |
-| **Tuist** | 4.0+ | Generación y gestión de proyectos |
-| **yq** | 4.0+ | Procesamiento de archivos YAML |
-| **Git** | 2.0+ | Control de versiones |
+| Tool | Version | Purpose |
+|------|---------|---------|
+| **Xcode** | 15.0+ | Development IDE |
+| **Swift** | 5.9+ | Programming language |
+| **Tuist** | 4.0+ | Project generation and management |
+| **yq** | 4.0+ | YAML file processing |
+| **Git** | 2.0+ | Version control |
 
-### Instalación de Dependencias
+### Dependency Installation
 
 ```bash
-# Instalar Tuist
+# Install Tuist
 curl -Ls https://install.tuist.io | bash
 
-# Instalar yq (macOS)
+# Install yq (macOS)
 brew install yq
 
-# Verificar instalaciones
+# Verify installations
 tuist version
 yq --version
 ```
 
 ---
 
-## 🚀 Instalación
+## 🚀 Installation
 
-### 1. Clonar el Repositorio
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/tu-usuario/instagram-clone.git
+git clone https://github.com/your-username/instagram-clone.git
 cd instagram-clone
 ```
 
-### 2. Configurar la Arquitectura
+### 2. Configure Architecture
 
-El proyecto utiliza un archivo YAML para definir la estructura de directorios:
+The project uses a YAML file to define the directory structure:
 
 ```bash
-# El archivo architecture.yml define toda la estructura
+# The architecture.yml file defines the entire structure
 cat architecture.yml
 ```
 
-**Ejemplo de `architecture.yml`:**
+**Example `architecture.yml`:**
 
 ```yaml
 project_name: InstagramClone
@@ -199,31 +199,31 @@ structure:
       - Fonts:
 ```
 
-### 3. Generar la Estructura de Carpetas
+### 3. Generate Folder Structure
 
-Ejecuta el script que lee el archivo YAML y crea todos los directorios:
+Run the script that reads the YAML file and creates all directories:
 
 ```bash
-# Dar permisos de ejecución
+# Grant execution permissions
 chmod +x scripts/generate_structure.sh
 
-# Generar estructura desde YAML
+# Generate structure from YAML
 ./scripts/generate_structure.sh architecture.yml
 ```
 
-Este script utiliza `yq` para parsear el YAML y crear automáticamente toda la jerarquía de carpetas y archivos.
+This script uses `yq` to parse the YAML and automatically create the entire hierarchy of folders and files.
 
-### 4. Generar el Proyecto con Tuist
+### 4. Generate Project with Tuist
 
 ```bash
-# Instalar dependencias de Tuist (si las hay)
+# Install Tuist dependencies (if any)
 tuist install
 
-# Generar el proyecto Xcode
+# Generate Xcode project
 tuist generate
 ```
 
-### 5. Abrir en Xcode
+### 5. Open in Xcode
 
 ```bash
 open InstagramClone.xcworkspace
@@ -231,26 +231,26 @@ open InstagramClone.xcworkspace
 
 ---
 
-## 📁 Estructura del Proyecto
+## 📁 Project Structure
 
 ```
 InstagramClone/
-├── App/                          # Configuración de la aplicación
+├── App/                          # Application configuration
 │   ├── InstagramCloneApp.swift   # Entry point
-│   └── AppCoordinator.swift      # Coordinador principal
+│   └── AppCoordinator.swift      # Main coordinator
 │
-├── Core/                         # Funcionalidades base
-│   ├── Networking/               # Capa de red
-│   ├── Storage/                  # Persistencia de datos
-│   ├── Extensions/               # Extensiones de Swift/SwiftUI
-│   └── Utilities/                # Helpers y utilidades
+├── Core/                         # Base functionality
+│   ├── Networking/               # Network layer
+│   ├── Storage/                  # Data persistence
+│   ├── Extensions/               # Swift/SwiftUI extensions
+│   └── Utilities/                # Helpers and utilities
 │
-├── Models/                       # Modelos de datos
+├── Models/                       # Data models
 │   ├── User.swift
 │   ├── Post.swift
 │   └── ...
 │
-├── Features/                     # Módulos por funcionalidad
+├── Features/                     # Feature modules
 │   ├── Authentication/
 │   │   ├── ViewModels/
 │   │   ├── Views/
@@ -260,98 +260,98 @@ InstagramClone/
 │   ├── Profile/
 │   └── Stories/
 │
-├── Services/                     # Servicios de negocio
+├── Services/                     # Business services
 │   ├── AuthenticationService.swift
 │   ├── PostService.swift
 │   └── ...
 │
-├── Shared/                       # Componentes compartidos
+├── Shared/                       # Shared components
 │   ├── Views/
 │   ├── Components/
 │   ├── Modifiers/
 │   └── Protocols/
 │
-├── Navigation/                   # Sistema de navegación
+├── Navigation/                   # Navigation system
 │   ├── Router.swift
 │   └── NavigationState.swift
 │
-├── Resources/                    # Recursos del proyecto
+├── Resources/                    # Project resources
 │   ├── Assets.xcassets/
 │   └── Fonts/
 │
-├── Tuist/                        # Configuración de Tuist
+├── Tuist/                        # Tuist configuration
 │   ├── Config.swift
 │   ├── Dependencies.swift
 │   └── Templates/
 │
-├── scripts/                      # Scripts de automatización
+├── scripts/                      # Automation scripts
 │   └── generate_structure.sh
 │
-├── architecture.yml              # Definición de arquitectura
-├── Project.swift                 # Configuración del proyecto Tuist
+├── architecture.yml              # Architecture definition
+├── Project.swift                 # Tuist project configuration
 └── README.md
 ```
 
 ---
 
-## 🔧 Generación del Proyecto
+## 🔧 Project Generation
 
-### Workflow Completo
+### Complete Workflow
 
 ```mermaid
 graph LR
     A[architecture.yml] --> B[generate_structure.sh]
-    B --> C[Estructura de Carpetas]
+    B --> C[Folder Structure]
     C --> D[Tuist Templates]
     D --> E[tuist generate]
-    E --> F[Proyecto Xcode]
+    E --> F[Xcode Project]
 ```
 
-### Paso a Paso Detallado
+### Detailed Step-by-Step
 
-#### 1. **Definir Arquitectura en YAML**
+#### 1. **Define Architecture in YAML**
 
-Crea o modifica `architecture.yml` con la estructura deseada:
+Create or modify `architecture.yml` with the desired structure:
 
 ```yaml
-project_name: MiApp
+project_name: MyApp
 
 structure:
-  - MiModulo:
+  - MyModule:
       - ViewModels:
-          - MiViewModel.swift
+          - MyViewModel.swift
       - Views:
-          - MiView.swift
+          - MyView.swift
 ```
 
-#### 2. **Generar Estructura con Script**
+#### 2. **Generate Structure with Script**
 
-El script `generate_structure.sh` procesa el YAML:
+The `generate_structure.sh` script processes the YAML:
 
 ```bash
 #!/bin/bash
 
-# Script que usa yq para leer el YAML y crear carpetas
+# Script that uses yq to read YAML and create folders
 YAML_FILE=$1
 
-# Extraer nombre del proyecto
+# Extract project name
 PROJECT_NAME=$(yq '.project_name' $YAML_FILE)
 
-# Crear estructura recursivamente
+# Create structure recursively
 yq -r '.structure[] | to_entries[] | .key' $YAML_FILE | while read folder; do
     mkdir -p "$folder"
-    echo "✓ Creado: $folder"
+    echo "✓ Created: $folder"
 done
 
-echo "✅ Estructura generada exitosamente"
+echo "✅ Structure generated successfully"
 ```
 
-Ejecutar:
+Execute:
 ```bash
 ./scripts/generate_structure.sh architecture.yml
 ```
 
-#### 3. **Configurar Tuist**
+#### 3. **Configure Tuist**
 
 **`Project.swift`:**
 
@@ -365,7 +365,7 @@ let project = Project(
             name: "InstagramClone",
             platform: .iOS,
             product: .app,
-            bundleId: "com.tuapp.instagramclone",
+            bundleId: "com.yourapp.instagramclone",
             deploymentTarget: .iOS(targetVersion: "16.0", devices: [.iphone]),
             infoPlist: .default,
             sources: ["Sources/**"],
@@ -376,47 +376,47 @@ let project = Project(
 )
 ```
 
-#### 4. **Usar Templates de Tuist (Opcional)**
+#### 4. **Use Tuist Templates (Optional)**
 
 ```bash
-# Crear template personalizado
+# Create custom template
 tuist edit
 
-# Scaffold desde template
+# Scaffold from template
 tuist scaffold mvvm-feature --name Profile
 ```
 
-#### 5. **Generar Proyecto**
+#### 5. **Generate Project**
 
 ```bash
 tuist generate
 ```
 
-Esto creará:
+This will create:
 - `InstagramClone.xcodeproj`
 - `InstagramClone.xcworkspace`
-- Configuraciones de schemes
+- Scheme configurations
 
 ---
 
-## ⚙️ Configuración YAML
+## ⚙️ YAML Configuration
 
-### Sintaxis y Convenciones
+### Syntax and Conventions
 
 ```yaml
-project_name: NombreDelProyecto  # Nombre del proyecto
+project_name: ProjectName         # Project name
 
 structure:
-  - Carpeta:                      # Carpeta principal
-      - Subcarpeta:               # Subcarpeta
-          - Archivo.swift         # Archivo Swift
-      - OtroArchivo.swift         # Archivo en carpeta principal
+  - Folder:                       # Main folder
+      - Subfolder:                # Subfolder
+          - File.swift            # Swift file
+      - OtherFile.swift           # File in main folder
   
-  - OtraCarpeta:
-      - archivo.swift
+  - AnotherFolder:
+      - file.swift
 ```
 
-### Ejemplo Completo de Feature
+### Complete Feature Example
 
 ```yaml
 structure:
@@ -433,31 +433,31 @@ structure:
           - ProfileCoordinator.swift
 ```
 
-### Ventajas del Enfoque YAML
+### YAML Approach Advantages
 
-✅ **Declarativo**: Define estructura de forma clara
-✅ **Versionable**: Cambios rastreables en Git
-✅ **Reproducible**: Misma estructura en cualquier máquina
-✅ **Documentación**: Sirve como referencia del proyecto
-✅ **Automatizable**: Fácil de procesar con scripts
+✅ **Declarative**: Defines structure clearly
+✅ **Versionable**: Trackable changes in Git
+✅ **Reproducible**: Same structure on any machine
+✅ **Documentation**: Serves as project reference
+✅ **Automatable**: Easy to process with scripts
 
 ---
 
-## 🎨 Templates de Tuist
+## 🎨 Tuist Templates
 
-### Estructura de Templates
+### Template Structure
 
 ```
 Tuist/Templates/
 └── mvvm-feature/
-    ├── mvvm-feature.swift        # Definición del template
+    ├── mvvm-feature.swift        # Template definition
     └── Templates/
-        ├── ViewModel.stencil     # Template de ViewModel
-        ├── View.stencil          # Template de View
-        └── Coordinator.stencil   # Template de Coordinator
+        ├── ViewModel.stencil     # ViewModel template
+        ├── View.stencil          # View template
+        └── Coordinator.stencil   # Coordinator template
 ```
 
-### Ejemplo de Template
+### Template Example
 
 **`mvvm-feature.swift`:**
 
@@ -511,7 +511,7 @@ final class {{ name }}ViewModel: ObservableObject {
 }
 ```
 
-### Usar Template
+### Using Templates
 
 ```bash
 tuist scaffold mvvm-feature --name Profile
@@ -519,47 +519,47 @@ tuist scaffold mvvm-feature --name Profile
 
 ---
 
-## 💻 Uso
+## 💻 Usage
 
-### Ejecutar la Aplicación
+### Running the Application
 
 ```bash
-# Abrir proyecto
+# Open project
 tuist generate
 open InstagramClone.xcworkspace
 
-# O directamente
+# Or directly
 tuist run
 ```
 
-### Agregar Nueva Feature
+### Adding a New Feature
 
-1. **Actualizar `architecture.yml`:**
+1. **Update `architecture.yml`:**
 
 ```yaml
   - Features:
-      - NuevaFeature:
+      - NewFeature:
           - ViewModels:
-              - NuevaFeatureViewModel.swift
+              - NewFeatureViewModel.swift
           - Views:
-              - NuevaFeatureView.swift
+              - NewFeatureView.swift
 ```
 
-2. **Regenerar estructura:**
+2. **Regenerate structure:**
 
 ```bash
 ./scripts/generate_structure.sh architecture.yml
 ```
 
-3. **Implementar código en los archivos creados**
+3. **Implement code in created files**
 
 ### Testing
 
 ```bash
-# Ejecutar tests
+# Run tests
 tuist test
 
-# Con coverage
+# With coverage
 tuist test --coverage
 ```
 
@@ -567,67 +567,67 @@ tuist test --coverage
 
 ## 🗺️ Roadmap
 
-- [ ] Integración con Firebase
-- [ ] Implementación de mensajería directa
-- [ ] Reels y videos cortos
-- [ ] Filtros de cámara en tiempo real
-- [ ] Modo oscuro personalizado
-- [ ] Internacionalización completa
-- [ ] Tests unitarios (80%+ coverage)
-- [ ] Tests de UI con Snapshot Testing
-- [ ] CI/CD con GitHub Actions
-- [ ] Documentación completa con DocC
+- [ ] Firebase integration
+- [ ] Direct messaging implementation
+- [ ] Reels and short videos
+- [ ] Real-time camera filters
+- [ ] Custom dark mode
+- [ ] Complete internationalization
+- [ ] Unit tests (80%+ coverage)
+- [ ] UI tests with Snapshot Testing
+- [ ] CI/CD with GitHub Actions
+- [ ] Complete documentation with DocC
 
 ---
 
-## 🤝 Contribución
+## 🤝 Contributing
 
-Las contribuciones son bienvenidas. Por favor:
+Contributions are welcome. Please:
 
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Guías de Contribución
+### Contribution Guidelines
 
-- Sigue la arquitectura MVVM establecida
-- Actualiza `architecture.yml` si agregas nuevos módulos
-- Incluye tests para nueva funcionalidad
-- Documenta código público con comentarios
-- Usa SwiftLint para mantener estilo consistente
-
----
-
-## 📝 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+- Follow the established MVVM architecture
+- Update `architecture.yml` if adding new modules
+- Include tests for new functionality
+- Document public code with comments
+- Use SwiftLint to maintain consistent style
 
 ---
 
-## 👥 Autores
+## 📝 License
 
-- **Tu Nombre** - *Desarrollo inicial* - [GitHub](https://github.com/tu-usuario)
-
----
-
-## 🙏 Agradecimientos
-
-- Inspirado por la arquitectura de Instagram
-- Comunidad de SwiftUI
-- Equipo de desarrollo de Tuist
-- Contributors de yq
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
 
-## 📚 Recursos Adicionales
+## 👥 Authors
 
-- [Documentación de SwiftUI](https://developer.apple.com/documentation/swiftui)
-- [Documentación de Tuist](https://docs.tuist.io)
-- [MVVM Pattern en iOS](https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm)
+- **Your Name** - *Initial development* - [GitHub](https://github.com/your-username)
+
+---
+
+## 🙏 Acknowledgments
+
+- Inspired by Instagram's architecture
+- SwiftUI community
+- Tuist development team
+- yq contributors
+
+---
+
+## 📚 Additional Resources
+
+- [SwiftUI Documentation](https://developer.apple.com/documentation/swiftui)
+- [Tuist Documentation](https://docs.tuist.io)
+- [MVVM Pattern in iOS](https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm)
 - [yq Documentation](https://mikefarah.gitbook.io/yq/)
 
 ---
 
-**⭐ Si este proyecto te fue útil, considera darle una estrella en GitHub!**
+**⭐ If you found this project helpful, consider giving it a star on GitHub!**
