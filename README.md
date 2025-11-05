@@ -306,7 +306,7 @@ Here's the full structure with detailed annotations:
 # ============================================
 # PROJECT METADATA
 # ============================================
-name: "InstagramClone"
+name: "Project"
 author: "Reinner Steven Daza Leiva"
 description: "This is a skeleton app"
 
