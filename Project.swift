@@ -10,8 +10,7 @@ private let organization = "rsdl"
 let baseSettings: SettingsDictionary = [:]
 
 func debugSettings() -> SettingsDictionary {
-    var settings = baseSettings
-    settings["ENABLE_TESTABILITY"] = "YES"
+    let settings = baseSettings
     return settings
 }
 

@@ -1,0 +1,16 @@
+//
+//  {{FILENAME}}
+//  
+//
+//  Created by {{AUTHOR}} on {{DATE}}.
+//
+
+import XCTest
+@testable import {{PROJECT_NAME}}
+
+final class {{FILENAME}}: XCTestCase {
+    func testExample() throws {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+}
